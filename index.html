@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Train Schedule</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Barrio" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+<!-- <div class="container">
+</div> -->
+<div class="container">
+	
+	<div class="row">
+	<h2>Current Train Schedule</h2>
+		<div id="trainN" class="col-md-3">
+		<h3>Train Name</h3>
+		</div>
+		<div id="destin" class="col-md-3">
+		<h3>Destination</h3>
+		</div>
+		<div id="freque" class="col-md-2">
+		<h3>Frequency</h3>
+		</div>
+		<div id="nextAr" class="col-md-2">
+		<h3>Next Arrival</h3>
+		</div>
+		<div id="minute" class="col-md-2">
+		<h3>Minutes Away</h3>
+		</div>
+			
+	</div>
+	<div class="row">
+	<h2>Add Train</h2>
+		<h3 id="trainName"> Train Name: </h3>
+		<input id="trainNameInput">
+		<h3 id="destination"> Destination: </h3>
+		<input id="destinationInput">
+		<h3 id="firstTrain"> First Train: </h3>
+		<input id="firstTrainInput">
+		<h3 id="frequency"> Frequency (min): </h3>
+		<input id="frequencyInput">
+		<button class= "btn-block" id="saveNewTrain">Save</button>
+	</div>
+		
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDRbswFfLJxanu71FQD69Z2kuj_aSN319k",
+    authDomain: "train-schedule-d09a9.firebaseapp.com",
+    databaseURL: "https://train-schedule-d09a9.firebaseio.com",
+    projectId: "train-schedule-d09a9",
+    storageBucket: "",
+    messagingSenderId: "733604259210"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database()
+   console.log(database);
+
+  document.getElementById('saveNewTrain').onclick = function (){
+  	var trainName= document.getElementById("trainNameInput").value;
+  	var destination=document.getElementById("destinationInput").value;
+  	var firstTrain= document.getElementById("firstTrainInput").value;
+  	var frequency= document.getElementById("frequencyInput").value;
+
+
+  	console.log("making sure this works: " + trainName+" "+destination+" "+firstTrain+" "+frequency);
+
+  	database.ref(/*the location*/).set({
+  		trainName:trainName,
+  		destination:destination,
+  		firstTrain:firstTrain,
+  		frequency:frequency
+  	});
+
+  	var trainSched= {
+  trainN:[],
+  destin:[],
+  freque:[],
+  firstT:[]
+};
+
+var trainName= $("#trainNameInput").val();
+  	var destination=$("#destinationInput").val();
+  	var firstTrain= $("#firstTrainInput").val();
+  	var frequency= $("#frequencyInput").val();
+
+ trainSched.trainN.push(trainName);
+ trainSched.destin.push(destination);
+ trainSched.freque.push(firstTrain);
+ trainSched.firstT.push(frequency);
+
+function makeRows(){
+for (var i = 0; i < trainSched.trainN.length; i++) {
+	var newRow = $("<div>");
+	newRow.addClass("row");
+	$("#trainN").append(newRow.html(trainSched.trainN[i]));
+	var newRow = $("<div>");
+	newRow.addClass("row");
+	$("#destin").append(newRow.html(trainSched.destin[i]));
+	var newRow = $("<div>");
+	newRow.addClass("row");
+	$("#freque").append(newRow.html(trainSched.freque[i]));
+
+}
+}
+
+$(document).ready(function(){
+
+$("#saveNewTrain").click(function(){
+	makeRows();
+})
+
+});
+
+  };
+  database.ref().on("value", function (snapshot) {
+  console.log(snapshot.val());
+});
+</script>
+ <script
+  type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"
+></script>
+
+  <script type="text/javascript" src="assets/javascript/train.js"></script>
+</body>
+
+</body>
+</html>

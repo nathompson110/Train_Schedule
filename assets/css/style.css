@@ -1,0 +1,61 @@
+/*.container{
+	width:100%;
+	margin:auto 5% auto 5%;
+	border: 1px;
+	border-color: purple;
+	border-radius: 10px;
+}*/
+input {
+	width:100%;
+}
+h2 {
+	color:white;
+	background-color: purple;
+	;
+
+}
+h3{
+	color: #1B4F72;
+	font-size:16px;
+	font-size: 2vw;
+}
+
+body {
+	background-color: #EBF5FB;
+	opacity: 30%;
+}
+
+/*
+button {
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;*/
+}
+#backgroundTv {
+	width:50px;
+	position:absolute;
+	top:25px;
+	left:25px;
+}
+#thinkSunny {
+	margin-top: 155px;
+	margin-left: 50px;
+	z-index: 0;
+
+
+	
+}
+.jumbotron {
+	background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:white;
+}
+
+#tv {
+	
+	z-index: -1;
+	
+
+}
